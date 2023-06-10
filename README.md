@@ -17,11 +17,13 @@
 </ul>
 
 Используемый UI framework:
+
 <ul>
   <li>Bootstrap</li>
 </ul>
 
 Используемая архитектура приложения:
+
 <ul>
   <li>Feature Sliced Design</li>
 </ul>
