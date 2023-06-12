@@ -6,8 +6,9 @@ import {
   watchFetchComments,
 } from "../../entities/comments";
 import { RootState } from "../../app/store";
+import { ListGroup, Spinner } from "react-bootstrap";
 
-export const CommentsList = () => {
+export const CommentsList: React.FC = () => {
   const dispatch = useDispatch();
   const { comments, status, error } = useSelector(
     (state: RootState) => state.comments
@@ -22,7 +23,11 @@ export const CommentsList = () => {
   }, [dispatch]);
 
   if (status === "loading") {
-    return <div>Loading...</div>;
+    return (
+      <div className="centered">
+        <Spinner animation="border" />
+      </div>
+    );
   }
 
   if (status === "failed") {
@@ -30,10 +35,13 @@ export const CommentsList = () => {
   }
 
   return (
-    <ul>
+    <ListGroup>
       {comments.map((comment: Comment) => (
-        <li key={comment.id}>{comment.body}</li>
+        <ListGroup.Item key={comment.id}>
+          <h5>{comment.email}</h5>
+          <p>{comment.body}</p>
+        </ListGroup.Item>
       ))}
-    </ul>
+    </ListGroup>
   );
 };

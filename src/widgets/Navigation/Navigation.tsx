@@ -12,7 +12,7 @@ export const Navigation = () => {
           <Nav className="me-auto">
             <NavDropdown title="Бургер (вкусно?) " id="basic-navbar-nav">
               {pages.map(({ label, to }) => (
-                <NavDropdown.Item>
+                <NavDropdown.Item key={label}>
                   <Item key={label} label={label} link={to} />
                 </NavDropdown.Item>
               ))}

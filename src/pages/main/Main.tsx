@@ -1,8 +1,11 @@
+import { PostsList } from "../../features";
+
 function Main() {
-    return (
-        <>
-        </>
-    )
+  return (
+    <>
+      <PostsList />
+    </>
+  );
 }
 
 export default Main;
