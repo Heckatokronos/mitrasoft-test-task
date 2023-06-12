@@ -1,11 +1,25 @@
 import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
+import { all } from "redux-saga/effects";
+import commentsSlice from "../entities/comments/model/commentsSlice";
+import { fetchCommentsSaga } from "../entities/comments/model/commentsSaga";
+
+function* rootSaga() {
+  yield all([fetchCommentsSaga()]);
+}
 
 const sagaMiddleware = createSagaMiddleware();
-const middleware = [sagaMiddleware];
 
-export const store = configureStore({
-  reducer: {},
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(middleware),
+const store = configureStore({
+  reducer: {
+    comments: commentsSlice,
+  },
+  middleware: [sagaMiddleware],
 });
+
+sagaMiddleware.run(rootSaga);
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+
+export default store;
