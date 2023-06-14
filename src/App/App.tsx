@@ -3,9 +3,10 @@ import { Route, Routes } from "react-router-dom";
 import { ThemeProvider, Spinner } from "react-bootstrap";
 import { Layout } from "../widgets/Navigation/Layout";
 
+const AboutMe = React.lazy(() => import("../pages/about-me/AboutMe"));
 const Main = React.lazy(() => import("../pages/main/Main"));
 const Post = React.lazy(() => import("../pages/post/Post"));
-const Profile = React.lazy(() => import("../pages/profile/Profile"));
+const Profile = React.lazy(() => import("../pages/user-profile/Profile"));
 
 function App() {
   return (
@@ -17,7 +18,12 @@ function App() {
         <Suspense
           fallback={
             <div className="centered">
-              <Spinner animation="border" />
+              <Spinner
+                as="span"
+                animation="border"
+                role="status"
+                aria-hidden="true"
+              />
             </div>
           }
         >
@@ -25,7 +31,8 @@ function App() {
             <Route path="*" element={<Main />} />
             <Route path="/" element={<Main />} />
             <Route path="/post/:id" element={<Post />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/about-me" element={<AboutMe />} />
+            <Route path="/profile/:id" element={<Profile />} />
           </Routes>
         </Suspense>
       </Layout>

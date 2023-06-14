@@ -1,17 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-export interface Comment {
-  postId: number;
-  id: number;
-  email: string;
-  body: string;
-}
-
-interface CommentsState {
-  comments: Comment[];
-  status: "idle" | "loading" | "failed";
-  error: string | null;
-}
+import { CommentsState } from "./types";
 
 const initialState: CommentsState = {
   comments: [],
