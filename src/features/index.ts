@@ -1,3 +1,4 @@
 export * from "./comments-list/ui";
-export * from "./posts-list/ui"
-export * from "./Profile/Profile"
+export * from "./post/ui";
+export * from "./posts-list/ui";
+export * from "./profile/ui";

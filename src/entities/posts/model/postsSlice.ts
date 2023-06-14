@@ -1,17 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-export interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
-
-interface PostsState {
-  posts: Post[];
-  status: "idle" | "loading" | "failed";
-  error: string | null;
-}
+import { PostsState } from "./types";
 
 const initialState: PostsState = {
   posts: [],

@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  Comment,
   commentsRequested,
   watchFetchComments,
 } from "../../entities/comments";
+import { Comment } from "../../entities/comments/model/types";
 import { RootState } from "../../app/store";
 import { ListGroup, Spinner } from "react-bootstrap";
 
